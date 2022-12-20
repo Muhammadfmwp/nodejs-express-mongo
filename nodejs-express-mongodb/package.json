@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-express-mongodb",
+  "version": "1.0.0",
+  "description": "express and mongodb example",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muhammadfmwp/nodejs-express-mongo.git"
+  },
+  "keywords": [
+    "mongo",
+    "express",
+    "nodejs"
+  ],
+  "author": "fakhrimubarok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Muhammadfmwp/nodejs-express-mongo/issues"
+  },
+  "homepage": "https://github.com/Muhammadfmwp/nodejs-express-mongo#readme"
+}
