@@ -1,27 +1,26 @@
+require("dotenv").config();
+
 const express = require("express");
-const cors = require("cors");
+const mongoose = require("mongoose");
+const mongoString = process.env.DATABASE_URL;
+mongoose.set("strictQuery", false);
+mongoose.connect(mongoString);
+const database = mongoose.connection;
+const routes = require("./routes/routes");
 
-const app = express();
-
-var corsOptions = {
-  origin: "http://localhost:8081",
-};
-
-app.use(cors(corsOptions));
-
-// parse requests of content-type - application/json
-app.use(express.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
-
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to REST and Mongo." });
+database.on("error", (error) => {
+  console.log(error);
 });
 
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+database.once("connected", () => {
+  console.log("Database Connected");
+});
+const app = express();
+
+app.use(express.json());
+
+app.use("/api", routes);
+
+app.listen(3000, () => {
+  console.log(`Server Started at ${3000}`);
 });
